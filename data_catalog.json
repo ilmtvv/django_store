@@ -1,0 +1,52 @@
+[
+  {
+    "model": "catalog.product",
+    "pk": 1,
+    "fields": {
+      "product_name": "������",
+      "product_description": "���������",
+      "product_image": "",
+      "product_category": 4,
+      "product_price": 1.0,
+      "data_of_creation": "2023-11-20",
+      "data_of_modified": "2023-11-20"
+    }
+  },
+  {
+    "model": "catalog.product",
+    "pk": 2,
+    "fields": {
+      "product_name": "qwe",
+      "product_description": "qwe",
+      "product_image": "",
+      "product_category": 4,
+      "product_price": 1.0,
+      "data_of_creation": "2023-11-20",
+      "data_of_modified": "2023-11-20"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 3,
+    "fields": {
+      "category_name": "����",
+      "category_description": "����� ����"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 4,
+    "fields": {
+      "category_name": "������",
+      "category_description": "����� ������"
+    }
+  },
+  {
+    "model": "catalog.category",
+    "pk": 5,
+    "fields": {
+      "category_name": "rtyrtyr",
+      "category_description": "rtyrtyrty"
+    }
+  }
+]
