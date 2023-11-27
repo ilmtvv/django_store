@@ -2,7 +2,6 @@ from django.shortcuts import render
 
 def home(request):
 
-
     return render(request, 'home.html')
 
 def contacts(request):
@@ -13,4 +12,9 @@ def contacts(request):
         print(name,phone,message)
 
     return render(request, 'contacts.html')
+
+
+def product(request):
+
+    return render(request, 'product.html')
 
