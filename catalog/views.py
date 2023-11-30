@@ -1,8 +1,15 @@
 from django.shortcuts import render
 
-def home(request):
+from catalog.models import Product
 
-    return render(request, 'home.html')
+
+def home(request):
+    product_list = Product.objects.all()
+    context = {
+        'object_list' : product_list
+    }
+    return render(request, 'home.html', context)
+
 
 def contacts(request):
     if request.method == 'POST':
@@ -14,7 +21,15 @@ def contacts(request):
     return render(request, 'contacts.html')
 
 
-def product(request):
+def product(request, id):
 
-    return render(request, 'product.html')
+    product = Product.objects.get(id=id)
+
+
+    context = {
+        'object' : product
+    }
+
+
+    return render(request, 'product.html', context)
 
