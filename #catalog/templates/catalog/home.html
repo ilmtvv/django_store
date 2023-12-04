@@ -1,6 +1,6 @@
 
 
-{% extends 'base.html' %}
+{% extends 'catalog/base.html' %}
 {% block content %}
 {% load my_tags %}
 <div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
@@ -24,7 +24,7 @@
               <p class="card-text">{{ object.product_description|truncatechars:10 }}</p>
             </div>
   <div >
-    <a class="btn btn-primary mb-2" type="button" href="product/{{ object.pk }}">Подробнее</a>
+    <a class="btn btn-primary mb-2" type="button" href="{% url 'catalog:product' object.pk %}">Подробнее</a>
  </div>
           </div>
         </div>
