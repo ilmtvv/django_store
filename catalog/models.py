@@ -21,3 +21,8 @@ class Category(models.Model):
     def __str__(self):
         return self.category_name
 
+
+class Contacts(models.Model):
+    name = models.CharField(max_length=50)
+    phone = models.CharField(max_length=10)
+    message = models.CharField(max_length=10)

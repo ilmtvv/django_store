@@ -1,35 +1,27 @@
-from django.shortcuts import render
+from django.urls import reverse_lazy
+from django.views.generic import ListView, DetailView, CreateView
 
-from catalog.models import Product
-
-
-def home(request):
-    product_list = Product.objects.all()
-    context = {
-        'object_list' : product_list
-    }
-    return render(request, 'catalog/home.html', context)
+from catalog.models import Product, Contacts
 
 
-def contacts(request):
-    if request.method == 'POST':
-        name = request.POST.get('name')
-        phone = request.POST.get('phone')
-        message = request.POST.get('message')
-        print(name,phone,message)
-
-    return render(request, 'catalog/contacts.html')
+class ProductListView(ListView):
+    model = Product
 
 
-def product(request, id):
-
-    product = Product.objects.get(id=id)
-
-
-    context = {
-        'object' : product
-    }
+class ContactsCreateView(CreateView):
+    model = Contacts
+    fields = ('name', 'message', 'phone')
+    success_url = reverse_lazy('catalog:contacts')
 
 
-    return render(request, 'catalog/product.html', context)
+class ProductDetailView(DetailView):
+
+    model = Product
+
+    def get_queryset(self):
+        queryset = super().get_queryset()
+        queryset = queryset.filter(pk=self.kwargs.get('pk'))
+        return queryset
+
+
 
