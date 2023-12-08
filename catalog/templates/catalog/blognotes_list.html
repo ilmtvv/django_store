@@ -1,0 +1,43 @@
+
+
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<div class="pricing-header px-3 py-3 pt-md-5 pb-md-4 mx-auto text-center">
+    <h1 class="display-4">Skystore</h1>
+    <p class="lead">БЛОГ</p>
+</div>
+<div>
+<a class="btn btn-primary mb-2" type="button" href="{% url 'catalog:create' %}">создать запись</a>
+    </div>
+<div class="container">
+
+    <div class="row text-center">
+
+        {% for object in object_list %}
+        <div class="col-3 mb-2">
+
+          <div class="card shadow-sm">
+              <h1>{{ object.title }}</h1>
+            <img src="{{ object.image|image_filter }}" >
+
+            <div class="card-body">
+              <p class="card-text">{{ object.content }}</p>
+            </div>
+  <div >
+    <a class="btn btn-primary mb-2" type="button" href="{% url 'catalog:detail' object.slug %}">открыть</a>
+ </div>
+               <div >
+    <a class="btn btn-primary mb-2" type="button" href="{% url 'catalog:update' object.pk %}">редактировать</a>
+ </div>
+                           <div >
+    <a class="btn btn-primary mb-2" type="button" href="{% url 'catalog:delete' object.pk %}">удалить</a>
+ </div>
+
+          </div>
+        </div>
+{% endfor %}
+
+    </div>
+
+    {% endblock %}

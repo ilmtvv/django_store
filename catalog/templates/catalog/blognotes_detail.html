@@ -1,0 +1,28 @@
+{% extends 'catalog/base.html' %}
+{% block content %}
+{% load my_tags %}
+<div class="container">
+
+
+          <div class="card shadow-sm">
+            <img src="{% image_tag object.image %}" >
+            <div class="card-body">
+              <p class="card-text">{{ object.content }} ({{ object.slug }})</p>
+
+            </div>
+              <div>
+               просмотры {{ object.views }}
+</div>
+
+
+
+
+  <div >
+ 
+<!--    <button class="btn btn-primary" type="button">КУПИТЬ</button>-->
+ </div>
+
+</div>
+
+
+{% endblock %}

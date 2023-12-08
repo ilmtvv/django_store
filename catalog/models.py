@@ -26,3 +26,13 @@ class Contacts(models.Model):
     name = models.CharField(max_length=50)
     phone = models.CharField(max_length=10)
     message = models.CharField(max_length=10)
+
+
+class BlogNotes(models.Model):
+    title = models.CharField(max_length=100)
+    slug = models.CharField(max_length=100, verbose_name='slug')
+    content = models.CharField(max_length=100)
+    image = models.ImageField(upload_to='images/blog', **NULLABLE)
+    date = models.DateField(null=True, blank=True)
+    is_active = models.BooleanField(default=True)
+    views = models.IntegerField(default=0)
