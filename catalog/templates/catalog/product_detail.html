@@ -23,7 +23,12 @@
 
   <div >
  
-    <button class="btn btn-primary" type="button">КУПИТЬ</button>
+    <a class="btn btn-primary" type="button" href="{% url 'catalog:update_product' object.pk %}">обновить продукт</a>
+ </div>
+
+                <div >
+
+    <a class="btn btn-primary" type="button" href="{% url 'catalog:delete_product' object.pk %}">удалить продукт</a>
  </div>
 
 </div>

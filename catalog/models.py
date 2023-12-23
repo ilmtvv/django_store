@@ -12,6 +12,16 @@ class Product(models.Model):
     data_of_creation = models.DateField(verbose_name='дата создания продукта')
     data_of_modified = models.DateField(verbose_name='дата последнего изменения')
 
+    version = models.CharField(max_length=10, **NULLABLE)
+
+
+class VersionProduct(models.Model):
+    product_pk = models.ForeignKey('Product', on_delete=models.CASCADE, **NULLABLE)
+    name = models.CharField(max_length=10)
+    is_active = models.BooleanField(default=False, unique=True)
+
+
+
 
 class Category(models.Model):
     category_name = models.CharField(max_length=64, verbose_name='имя категории')
