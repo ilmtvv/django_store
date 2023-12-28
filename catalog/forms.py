@@ -8,10 +8,15 @@ class ProductForm(forms.ModelForm):
 
     class Meta:
         model = Product
-        fields = '__all__'
+        #fields = '__all__'
+        exclude = ('owner',)
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
+
+
+
+        self.fields['version'].widget = forms.HiddenInput()
         for field_name, field in self.fields.items():
             field.widget.attrs['class'] = 'form-control'
 

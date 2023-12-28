@@ -1,4 +1,7 @@
+
+
 from django.forms import inlineformset_factory
+from django.http import request
 from django.urls import reverse_lazy, reverse
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from pytils.translit import slugify
@@ -12,7 +15,8 @@ class ProductListView(ListView):
 
     def get_queryset(self, *args, **kwargs):
         queryset = super().get_queryset(*args, **kwargs)
-        versions = VersionProduct.objects.filter(is_active=True)
+        #queryset = queryset.filter(owner=self.request.user)
+        versions = VersionProduct.objects.filter(is_active=True,)
         for version in versions:
             version.product_pk.version = version.name
             version.product_pk.save()
@@ -72,6 +76,13 @@ class ProductCreateView(CreateView):
         'update': 'sozdat product',
     }
     form_class = ProductForm
+
+    def form_valid(self, form):
+        self.object = form.save()
+        self.object.owner = self.request.user
+        self.object.save()
+
+        return super().form_valid(form)
 
 class ProductDeleteView(DeleteView):
     model = Product

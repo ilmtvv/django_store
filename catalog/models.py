@@ -1,5 +1,7 @@
 from django.db import models
 
+from config import settings
+
 NULLABLE = {'blank': True, 'null': True}
 
 
@@ -14,11 +16,12 @@ class Product(models.Model):
 
     version = models.CharField(max_length=10, **NULLABLE)
 
+    owner = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.SET_NULL, **NULLABLE)
 
 class VersionProduct(models.Model):
     product_pk = models.ForeignKey('Product', on_delete=models.CASCADE, **NULLABLE)
     name = models.CharField(max_length=10)
-    is_active = models.BooleanField(default=False, unique=True)
+    is_active = models.BooleanField(default=False,)
 
 
 

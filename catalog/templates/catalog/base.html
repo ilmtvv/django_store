@@ -16,6 +16,14 @@
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:home' %}">Каталог</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:contacts' %}">Контакты</a>
         <a class="p-2 btn btn-outline-primary" href="{% url 'catalog:blog' %}">блог</a>
+
+        {% if user.is_authenticated %}
+        <a class="p-2 btn btn-outline-primary" href="{% url 'users:uupdate' %}">профиль</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'users:logout' %}">выход</a>
+        {% else %}
+        <a class="p-2 btn btn-outline-primary" href="{% url 'users:login' %}">вход</a>
+        <a class="p-2 btn btn-outline-primary" href="{% url 'users:register' %}">регистрация</a>
+        {% endif %}
     </nav>
     {% include 'catalog/includes/inc_base.html' %}
 </div>
