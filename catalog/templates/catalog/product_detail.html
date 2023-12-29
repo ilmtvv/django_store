@@ -20,17 +20,18 @@
  <div class="card-header py-3">
             <h4 class="my-0 fw-normal">{{ object.product_price }}</h4>
           </div>
-
+ {% if user.is_active == True %}
   <div >
- 
+
     <a class="btn btn-primary" type="button" href="{% url 'catalog:update_product' object.pk %}">обновить продукт</a>
+
  </div>
 
                 <div >
 
     <a class="btn btn-primary" type="button" href="{% url 'catalog:delete_product' object.pk %}">удалить продукт</a>
  </div>
-
+{% endif %}
 </div>
 
 

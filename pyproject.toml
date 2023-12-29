@@ -17,6 +17,7 @@ pytils = "^0.4.1"
 django-crispy-forms = "^2.1"
 setuptools = "^69.0.2"
 crispy-bootstrap5 = "^2023.10"
+uuid = "^1.30"
 
 
 [build-system]

@@ -2,7 +2,7 @@ from django.urls import path
 
 from users.apps import UsersConfig
 
-from users.views import LoginView, LogoutView, RegisterView, UserUpdateView, generate_new_password
+from users.views import LoginView, LogoutView, RegisterView, UserUpdateView, generate_new_password, succes, confirm
 
 app_name = UsersConfig.name
 
@@ -13,4 +13,6 @@ urlpatterns = [
     path('register/', RegisterView.as_view(), name='register'),
     path('profile/', UserUpdateView.as_view(), name='uupdate'),
     path('profile/genpassword/', generate_new_password, name='generatepassword'),
+    path('register/succes/', succes, name='succes'),
+    path('register/<uuid:uuid>/', confirm, name='confirm'),
 ]
